@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
+import p from '../Images/product-1.jpg';
+
 require('dotenv').config();
 
 function Body(props) {
@@ -37,12 +39,13 @@ function Body(props) {
     return (
         <div>
             {loading ? <h1>"Please wait while we load..."</h1> :
-                <div>
+                <div className="body-container">
                     <h1>Women's Clothing</h1>
                     <div className="grid">
                         {data.map((item) => {
                             return (
                                 <div className="grid-card">
+                                    <img src={ require('../Images/'+item.productImage).default } alt={item.productImage} />
                                     <h1>{item.productName}</h1>
                                     <p>{item.price}</p>
                                     <p>{item.productImage}</p>
