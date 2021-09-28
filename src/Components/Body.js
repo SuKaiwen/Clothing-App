@@ -19,9 +19,11 @@ function Body(props) {
 
         req.onreadystatechange = () => {
             if (req.readyState === XMLHttpRequest.DONE) {
-                const response = req.responseText;
-                setData(response);
-                console.log(req.responseText);
+
+                // Parse text to json file
+                var json = JSON.parse(req.responseText);
+                setData(json);
+                console.log(json);
             }
         };
 
@@ -37,7 +39,24 @@ function Body(props) {
             {loading ? <h1>"Please wait while we load..."</h1> :
                 <div>
                     <h1>Women's Clothing</h1>
-                    <h1>{data}</h1>
+                    <div className="grid">
+                        {data.map((item) => {
+                            return (
+                                <div className="grid-card">
+                                    <h1>{item.productName}</h1>
+                                    <p>{item.price}</p>
+                                    <p>{item.productImage}</p>
+                                    <div className="product-sizes">
+                                    {item.size.map((sizes) => {
+                                        return (
+                                            <p className="sizes-text">{sizes}</p>
+                                        )
+                                    })}
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
                 </div>
             }
             
