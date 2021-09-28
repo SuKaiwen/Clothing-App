@@ -19,13 +19,6 @@ body{
   vertical-align: center;
 }
 
-.button-filter{
-  margin-left: 10px;
-  background-color: white;
-  color:#153f65;
-  border: 1px solid #153f65;
-}
-
 .nav-bar{
   width: 100%;
   background-color: #153f65;
@@ -106,6 +99,7 @@ body{
 
 .card-title{
   font-size:20px;
+  margin-right:10px;
 }
 
 .card-bottom{

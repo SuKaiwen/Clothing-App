@@ -14,8 +14,9 @@ function Body(props) {
     // Final data array post sorting the filtered data
     const [sortedData, setsortedData] = useState([]);
 
-    // State selector
+    // State to display current selected sorting option and filter (for CSS purposes)
     const [selectValue, setSelectValue] = useState("Latest");
+    const [filterValue, setFilterValue] = useState("All");
 
     // Boolean to show loading animation while we fetch data from API 
     const [loading, setLoading] = useState(true);
@@ -69,9 +70,10 @@ function Body(props) {
         }
     }
 
-
+    // After each filter we set the sorting option back to Latest
     const filterData = (filter) => {
         setSelectValue("Latest");
+        setFilterValue(filter);
         switch(filter){
             case "All":
                 setFilteredData(data);
@@ -100,7 +102,7 @@ function Body(props) {
                 <div className="body-container">
                     <div className="body-header">
                         <h1>WOMEN'S TOPS</h1>
-                        <p>Products ({data.length})</p>
+                        <h5 className="card-title">Products ({sortedData.length})</h5>
                     </div>
                     <div className="body-sort">
                         <div className="row">
@@ -114,9 +116,11 @@ function Body(props) {
                         </div>
                         <div className="row">
                             <h5 className="card-title">Filter by: </h5>
-                            <button className="btn btn-primary button-filter" onClick={() => filterData("All")}>All</button>
-                            <button className="btn btn-primary button-filter" onClick={() => filterData("Sale")}>On Sales</button>
-                            <button className="btn btn-primary button-filter" onClick={() => filterData("Exclusive")}>Exclusive</button>
+                            <select value = {filterValue} className="selector" onChange={ val => filterData(val.target.value)}>
+                                <option value="All">All</option>
+                                <option value="Sale">On Sale</option>
+                                <option value="Exclusive">Exclusive</option>
+                            </select>
                         </div>
                     </div>
                     <div className="grid">
