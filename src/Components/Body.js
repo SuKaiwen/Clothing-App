@@ -8,6 +8,12 @@ function Body(props) {
     // Structure to hold API response
     const [data, setData] = useState([]);
 
+    // Filter the data by key words e.g. exclusive only
+    const [filteredData, setFilteredData] = useState([]);
+    
+    // Final data array post sorting the filtered data
+    const [sortedData, setsortedData] = useState([]);
+
     // Boolean to show loading animation while we fetch data from API 
     const [loading, setLoading] = useState(true);
 
@@ -25,6 +31,7 @@ function Body(props) {
                 // Parse text to json file
                 var json = JSON.parse(req.responseText);
                 setData(json);
+                setsortedData(json);
                 console.log(json);
             }
         };
@@ -36,6 +43,28 @@ function Body(props) {
         setLoading(false);
     }
 
+    // Note sorting data by latest just returns the original data array (sort by index)
+    const sortData = (sort) => {
+        switch(sort){
+            case "Alphabet":
+                const filteredByAlphabet = [].concat(data).sort((a,b) => a.productName > b.productName ? 1: -1);
+                setsortedData(filteredByAlphabet);
+                break;
+            case "Price asc":
+                const filteredByPriceAsc = [].concat(data).sort((a,b) => a.price > b.price ? 1 : -1);
+                setsortedData(filteredByPriceAsc);
+                break;
+            case "Price dsc":
+                const filteredByPriceDsc = [].concat(data).sort((a,b) => a.price < b.price ? 1 : -1);
+                setsortedData(filteredByPriceDsc);
+                break;
+            default:
+                setsortedData(data);
+                break;
+        }
+    }
+
+    
     return (
         <div>
             {loading ? <h1>"Please wait while we load..."</h1> :
@@ -44,8 +73,24 @@ function Body(props) {
                         <h1>WOMEN'S TOPS</h1>
                         <p>Products ({data.length})</p>
                     </div>
+                    <div className="body-sort">
+                        <div className="row">
+                            <h5 className="card-title">Sort by: </h5>
+                            <select className="selector" onChange={ val => sortData(val.target.value)}>
+                                <option value="">Latest</option>
+                                <option value="Alphabet">Alphabetical</option>
+                                <option value="Price asc">Price (low to high)</option>
+                                <option value="Price dsc">Price (high to low)</option>
+                            </select>
+                        </div>
+                        <div className="row">
+                            <h5 className="card-title">Filter by: </h5>
+                            <button className="btn btn-primary button-filter">On Sale</button>
+                            <button className="btn btn-primary button-filter">Exclusive</button>
+                        </div>
+                    </div>
                     <div className="grid">
-                        {data.map((item) => {
+                        {sortedData.map((item) => {
                             return (
                                 <div className="grid-card">
                                     <img src={ require('../Images/'+item.productImage).default } alt={item.productImage} />
