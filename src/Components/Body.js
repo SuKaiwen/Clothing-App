@@ -40,21 +40,31 @@ function Body(props) {
         <div>
             {loading ? <h1>"Please wait while we load..."</h1> :
                 <div className="body-container">
-                    <h1>Women's Clothing</h1>
+                    <div className="body-header">
+                        <h1>WOMEN'S TOPS</h1>
+                        <p>Products ({data.length})</p>
+                    </div>
                     <div className="grid">
                         {data.map((item) => {
                             return (
                                 <div className="grid-card">
                                     <img src={ require('../Images/'+item.productImage).default } alt={item.productImage} />
-                                    <h1>{item.productName}</h1>
-                                    <p>{item.price}</p>
-                                    <p>{item.productImage}</p>
-                                    <div className="product-sizes">
-                                    {item.size.map((sizes) => {
-                                        return (
-                                            <p className="sizes-text">{sizes}</p>
-                                        )
-                                    })}
+                                    <div className="grid-card-body">
+                                        <div className="card-top">
+                                            <h1 className="card-title">{item.productName}</h1>
+                                            <p className="price-text">{item.price}</p>
+                                        </div>
+                                        <div className="card-bottom">
+                                            <div className="product-sizes">
+                                                {item.size.map((sizes) => {
+                                                    return (
+                                                        <p className="sizes-text badge badge-primary">{sizes}</p>
+                                                    )
+                                                })}
+                                            </div>
+                                            <button className="btn btn-success sizes-text">Add to Cart</button>
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             )

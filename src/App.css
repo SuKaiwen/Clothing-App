@@ -2,6 +2,42 @@
   text-align: center;
 }
 
+body{
+  font-family: Poppins;
+}
+
+.body-header{
+  padding: 70px;
+}
+
+.nav-bar{
+  width: 100%;
+  background-color: #153f65;
+  color:white;
+  position: sticky;
+  top:0px;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-container{
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.nav-side{
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-text{
+  font-size: 20px;
+  padding: 5px 17px 0px 17px;
+}
+
 .body-container{
   width: 100%;
   margin: auto;
@@ -9,23 +45,43 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  color:#153f65;
 }
 
 .grid {
-  width:80%;
+  width:70%;
   display:flex;
   flex-direction: row;
   justify-content: space-evenly;
-  flex:3;
   flex-wrap:wrap;
-  align-items: center;
 }
 
 .grid-card{
-  width:30%;
+  width:32%;
   display: flex;
   text-align: left;
   flex-direction: column;
+  padding:5px;
+  margin-top:10px;
+}
+
+.grid-card-body{
+  position: relative;
+  height:180px;
+}
+
+.card-title{
+  font-size:20px;
+}
+
+.card-bottom{
+  bottom: 0px;
+  position: absolute;
+}
+
+.card-top{
+  top:0px;
+  position: absolute;
 }
 
 .product-sizes{
@@ -35,16 +91,29 @@
 
 .sizes-text{
   font-size: 12px;
-  padding: 5px;
+  padding: 8px;
+  margin-right: 5px;
+}
+
+.price-text{
+  font-size:15px;
+  font-weight: bold;
 }
 
 @media (min-width:0px) and (max-width: 600px){
+  .grid{
+    width: 80%;
+  }
+
   .grid-card{
     width:90%;
   }
 }
 
 @media (min-width: 600px) and (max-width: 1024px) {
+  .grid{
+    width:95%;
+  }
   .grid-card{
     width:45%;
   }
