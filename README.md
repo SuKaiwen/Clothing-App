@@ -3,7 +3,7 @@ Clothing Application
 Pulled data from external API and created this clothing app using React. It features a grid of products with multiple sorting and filtering options.
 
 To view:
-- click the "code" button
+- click the "code" button (top right)
 - copy the link (https://github.com/SuKaiwen/Clothing-App.git)
 - open your terminal
 - go to the directory you wish to clone in
