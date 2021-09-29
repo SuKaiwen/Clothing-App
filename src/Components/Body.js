@@ -61,11 +61,11 @@ function Body(props) {
                 setsortedData(sortByAlphabet);
                 break;
             case "Price asc":
-                const sortByPriceAsc = [].concat(filteredData).sort((a,b) => a.price > b.price ? 1 : -1);
+                const sortByPriceAsc = [].concat(filteredData).sort((a,b) => parseFloat(a.price.split("$")[1]) > parseFloat(b.price.split("$")[1]) ? 1 : -1);
                 setsortedData(sortByPriceAsc);
                 break;
             case "Price dsc":
-                const sortByPriceDsc = [].concat(filteredData).sort((a,b) => a.price < b.price ? 1 : -1);
+                const sortByPriceDsc = [].concat(filteredData).sort((a,b) => parseFloat(a.price.split("$")[1]) < parseFloat(b.price.split("$")[1]) ? 1 : -1);
                 setsortedData(sortByPriceDsc);
                 break;
             default:
@@ -98,6 +98,31 @@ function Body(props) {
                 setFilteredData(filterBothData);
                 setsortedData(filterBothData);
                 break;
+            case "Size XS":
+                const filterSizeXSData = [].concat(data).filter((item) => item.size.includes('XS'));
+                setFilteredData(filterSizeXSData);
+                setsortedData(filterSizeXSData);
+                break;
+            case "Size S":
+                const filterSizeSData = [].concat(data).filter((item) => item.size.includes('S'));
+                setFilteredData(filterSizeSData);
+                setsortedData(filterSizeSData);
+                break;
+            case "Size M":
+                const filterSizeMData = [].concat(data).filter((item) => item.size.includes('M'));
+                setFilteredData(filterSizeMData);
+                setsortedData(filterSizeMData);
+                break;
+            case "Size L":
+                const filterSizeLData = [].concat(data).filter((item) => item.size.includes('L'));
+                setFilteredData(filterSizeLData);
+                setsortedData(filterSizeLData);
+                break;
+            case "Size XL":
+                const filterSizeXLData = [].concat(data).filter((item) => item.size.includes('XL'));
+                setFilteredData(filterSizeXLData);
+                setsortedData(filterSizeXLData);
+                break;
             default:
                 setFilteredData(data);
                 setsortedData(data);
@@ -115,7 +140,7 @@ function Body(props) {
                 <img src={Header} className="head-image" alt="Header" />
                 <div class="header-text-box">
                     <h1 className="header-text-title">NEW ARRIVALS</h1>
-                    <p className="header-text">Check out the new summer catalog...</p>
+                    <p className="header-text">Check out the new summer catalog..</p>
                     <a href="#shop-items"><button className="btn header-button">SHOP NOW</button></a>
                 </div>
             </div>
@@ -145,11 +170,16 @@ function Body(props) {
                                     <option value="Sale">On Sale</option>
                                     <option value="Exclusive">Exclusive</option>
                                     <option value="Both">On Sale and Exclusive</option>
+                                    <option value="Size XS">Size XS</option>
+                                    <option value="Size S">Size S</option>
+                                    <option value="Size M">Size M</option>
+                                    <option value="Size L">Size L</option>
+                                    <option value="Size XL">Size XL</option>
                                 </select>
                             </div>
                         </div>
                         <div className="grid">
-                            {sortedData.length < 1 ? <h3>No products matching filter terms...</h3> :
+                            {sortedData.length < 1 ? <div className="error-container"><h3>Woops! Theres seems to be no products matching those filter terms...</h3></div> :
                             sortedData.map((item) => {
                                 return (
                                     <div className="grid-card">
