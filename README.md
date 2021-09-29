@@ -6,7 +6,7 @@ To view:
 
 To test:
 - go in to the project folder
-- run "npm start test"
+- run "npm run test"
 
 Gallery -->
 
@@ -25,6 +25,10 @@ Filter AND sort products at the same time:
 In case of no products containing a specific filter:
 
 ![image](https://user-images.githubusercontent.com/56058518/135205455-ba09e513-a551-4718-9e36-b99e78279bcc.png)
+
+Testing (done using Jest):
+
+![image](https://user-images.githubusercontent.com/56058518/135205819-476570f3-ce75-4c37-95a4-71e53814dcae.png)
 
 Mobile Responsive:
 
