@@ -11,6 +11,11 @@ To view:
 - go into the project folder
 - type "npm run start"
 
+To view test:
+- open your terminal
+- go into the project folder
+- type "npm run test"
+
 Gallery -->
 
 Homepage:
