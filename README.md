@@ -32,7 +32,11 @@ Testing (done using Jest):
 
 Mobile Responsive:
 
-![image](https://user-images.githubusercontent.com/56058518/135205504-099323df-c118-4911-8c4f-d5f37333cc72.png) ![image](https://user-images.githubusercontent.com/56058518/135205557-ba0d3832-cece-47d2-9fc0-2a73724c7060.png)![image](https://user-images.githubusercontent.com/56058518/135205589-b1f8dc50-57b4-48a4-8c8b-2fd992c146f9.png)
+![image](https://user-images.githubusercontent.com/56058518/135206160-3635cd2b-6ebe-469c-a28b-bf19073f9117.png)
+
+![image](https://user-images.githubusercontent.com/56058518/135206201-aa433f49-691b-482e-bd7e-22c785ab1646.png)
+
+![image](https://user-images.githubusercontent.com/56058518/135206256-efc13cdb-c72f-4c12-b7ab-97fd74960790.png)
 
 
 
